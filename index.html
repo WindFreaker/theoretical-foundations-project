@@ -1,25 +1,29 @@
 <html lang="en">
 
-    <title id="title">Theoretical Foundations Project</title>
+    <title>Theoretical Foundations Project</title>
     
     <body>
         
-        <script src="tester.js"></script>
+        <script id="script" src="tester.js"></script>
         <link rel="stylesheet" href="style.css">
         
-        <div class="container">
+        <div id="container" class="container">
             
-            <input id="alphabet" type="text" placeholder="Alphabet"> <br>
-            <input id="states" type="text" placeholder="States"> <br>
-            <input id="start" type="text" placeholder="Starting State"> <br>
-            <input id="accepting" type="text" placeholder="Accepting States"> <br>
+            <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()"> <br>
+            <input id="states" type="text" placeholder="States" onKeyup="checkForm()"> <br>
+            <input id="start" type="text" placeholder="Starting State" onKeyup="checkForm()"> <br>
+            <input id="accepting" type="text" placeholder="Accepting States" onKeyup="checkForm()"> <br>
                 
-            <textarea placeholder="Transitions"></textarea> <br>
+            <textarea id="transitions" placeholder="Transitions" onKeyup="checkForm()"></textarea> <br>
                 
-            <input type="text" placeholder="Test String"> <br>
-            <button onclick="runTest()">Submit Test</button>
+            <input type="text" placeholder="Test String" onKeyup="checkForm()"> <br>
+            <button id="runTest" onclick="runTest()" disabled="disabled">Submit Test</button>
         
         </div>
+		
+		<button onclick="reloadScript()">Reload Scripts</button> <br>
+		<a>Output:</a>
+		<a id="text"></a>
         
     </body>
     

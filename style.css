@@ -10,6 +10,57 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* EVERYTHING ABOVE IS FOR CENTERING THE WEBPAGE ONLY */
+/* EVERYTHING ABOVE IS FOR CENTERING THE WEBPAGE ONLY - DO NOT TOUCH */
 
-//something something something
+:root {
+    --background-color: rgb(32, 34, 37);
+    --main-color: rgb(47, 49, 54);
+    --lighter-color: rgb(54, 57, 63);
+    --input-color: rgb(72, 76, 82);
+}
+
+::placeholder {
+    color: gray;
+}
+     
+body {
+    background-color: var(--background-color);
+}
+
+p {
+    text-align: center;
+}
+
+input {
+    background-color: var(--input-color);
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+}
+
+textarea {
+    background-color: var(--input-color);
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    resize: none;
+    height: 100%;
+}
+
+div{
+    border: 1px solid red;
+}
+
+.container {
+    background-color: var(--main-color);
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 8fr;
+    grid-template-rows: 4fr 1fr;
+    grid-template-areas:
+        "a b c d"
+        "e e c d";
+    padding: 30px;
+    border-radius: 10px;
+}

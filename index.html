@@ -7,17 +7,37 @@
         <script id="script" src="tester.js"></script>
         <link rel="stylesheet" href="style.css">
         
-        <div id="container" class="container">
+        <div class="container">
             
-            <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()"> <br>
-            <input id="states" type="text" placeholder="States" onKeyup="checkForm()"> <br>
-            <input id="start" type="text" placeholder="Starting State" onKeyup="checkForm()"> <br>
-            <input id="accepting" type="text" placeholder="Accepting States" onKeyup="checkForm()"> <br>
+            <div style="grid-area: a;">
+                <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()"> <br>
+                <input id="states" type="text" placeholder="States" onKeyup="checkForm()"> <br>
+                <input id="start" type="text" placeholder="Starting State" onKeyup="checkForm()"> <br>
+                <input id="accepting" type="text" placeholder="Accepting States" onKeyup="checkForm()"> <br>
+            </div>
+            
+            <div style="grid-area: b;">
+                <textarea id="transitions" placeholder="Transitions" onKeyup="checkForm()"></textarea>
+            </div>
+            
+            <div style="grid-area: c;">
+            
+                <p>OR</p>
+            
+            </div>
+            
+            <div style="grid-area: d;">
                 
-            <textarea id="transitions" placeholder="Transitions" onKeyup="checkForm()"></textarea> <br>
+                <p>Upload a file</p>
+            
+            </div>
+            
+            <div style="grid-area: e;">
                 
-            <input type="text" placeholder="Test String" onKeyup="checkForm()"> <br>
-            <button id="runTest" onclick="runTest()" disabled="disabled">Submit Test</button>
+                <input type="text" placeholder="Test String" onKeyup="checkForm()">
+                <button id="runTest" onclick="runTest()" disabled="disabled">Submit Test</button>
+            
+            </div>
         
         </div>
 		

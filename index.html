@@ -1,10 +1,13 @@
 <html lang="en">
 
-    <title>Theoretical Foundations Project</title>
+    <title>Austin's Project</title>
     
     <body>
         
-        <script id="script" src="tester.js"></script>
+		<script id="tester" src="DFA.js"></script>
+		<script id="reloader" src="reloader.js"></script>
+		<script id="cssHandler" src="handler.js"></script>
+		
         <link rel="stylesheet" href="style.css">
         
         <div class="container">
@@ -22,14 +25,14 @@
             
             <div id="divider" class="box">
             
-                <p>OR</p>
+                <p class="specialFont">OR</p>
             
             </div>
             
             <div id="upload" class="box">
                 
                 <img src="upload_icon.png" width:="150" height="150" style="filter: brightness(0.7); display: block; margin:auto; margin-top: 50px;">
-                <p>Upload a file</p>
+                <p class="specialFont">Upload a file</p>
             
             </div>
             
@@ -42,7 +45,24 @@
         
         </div>
 		
-		<button onclick="reloadScript()">Reload Scripts</button> <br>
+		<div class="navbar">
+		
+			<a class="specialFont title">Austin Farmer's Theoretical Foundations Project</a>
+		
+			<div class="dropdown">
+				<a class="specialFont">Mode: DFA ▼</a>
+				<div class="dropdown content">
+					<a>DFA</a>
+					<a>NFA</a>
+					<a>Turing Machine</a>
+					<a>Option #4</a>
+				</div>
+		
+			</div>
+		
+		</div>
+		
+		<button style="margin-top: 50px;" onclick="reloadScript()">Reload Scripts</button> <br>
 		<a>Output:</a>
 		<a id="text"></a>
         

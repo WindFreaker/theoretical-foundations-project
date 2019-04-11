@@ -29,14 +29,6 @@ body {
     color: white;
 }
 
-p {
-    margin: auto;
-    text-align: center;
-    font: 1em arial, sans-serif;
-    font-weight: bold;
-    color: var(--text-color);
-}
-
 input {
     background-color: var(--lighter-color);
     color: white;
@@ -80,6 +72,20 @@ textarea:focus {
     background-color: var(--input-color);
 }
 
+.specialFont {
+	margin: auto;
+    text-align: center;
+    font: 1em arial, sans-serif;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.specialFont.title {
+	font-size: 1.8em;
+	display: inline-block;
+	padding: 10px;
+}
+
 .container {
     background-color: var(--main-color);
     display: grid;
@@ -92,8 +98,44 @@ textarea:focus {
     border-radius: 16px;
 }
 
-.box {
-    
+.navbar {
+	background-color: var(--main-color);
+	overflow: hidden;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 58px;
+}
+
+.dropdown {
+	float: right;
+	position: relative;
+	display: inline-block;
+	padding: 20px;
+	overflow: hidden;
+	background-color: var(--lighter-color);
+	height: 18px;
+}
+
+.dropdown.content {
+	position: absolute;
+	margin-top: 58px;
+	z-index: 1;
+	min-width: 160px;
+}
+
+.dropdown.content a {
+	display: block;
+}
+
+.dropdown:hover {
+	background-color: var(--input-color); <!-- WHAT??? -->
+}
+
+.dropdown:hover .dropdown.content{
+	display: block;
 }
 
 #inputs {
@@ -130,6 +172,6 @@ textarea:focus {
     grid-area: e;
     
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 2fr;
     grid-template-rows: 1fr;
 }

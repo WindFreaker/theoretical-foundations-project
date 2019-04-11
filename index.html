@@ -9,33 +9,34 @@
         
         <div class="container">
             
-            <div style="grid-area: a;">
-                <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()"> <br>
-                <input id="states" type="text" placeholder="States" onKeyup="checkForm()"> <br>
-                <input id="start" type="text" placeholder="Starting State" onKeyup="checkForm()"> <br>
-                <input id="accepting" type="text" placeholder="Accepting States" onKeyup="checkForm()"> <br>
+            <div id="inputs" class="box">
+                <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()">
+                <input id="states" type="text" placeholder="States" onKeyup="checkForm()">
+                <input id="start" type="text" placeholder="Starting state" onKeyup="checkForm()">
+                <input id="accepting" type="text" placeholder="Accepting states" onKeyup="checkForm()">
             </div>
             
-            <div style="grid-area: b;">
+            <div id="textarea" class="box">
                 <textarea id="transitions" placeholder="Transitions" onKeyup="checkForm()"></textarea>
             </div>
             
-            <div style="grid-area: c;">
+            <div id="divider" class="box">
             
                 <p>OR</p>
             
             </div>
             
-            <div style="grid-area: d;">
+            <div id="upload" class="box">
                 
+                <img src="upload_icon.png" width:="150" height="150" style="filter: brightness(0.7); display: block; margin:auto; margin-top: 50px;">
                 <p>Upload a file</p>
             
             </div>
             
-            <div style="grid-area: e;">
+            <div id="submit" class="box">
                 
-                <input type="text" placeholder="Test String" onKeyup="checkForm()">
-                <button id="runTest" onclick="runTest()" disabled="disabled">Submit Test</button>
+                <input id="teststring" type="text" placeholder="Test string" onKeyup="checkForm()">
+                <button id="runTest" onclick="runTest()" disabled="disabled">Submit</button>
             
             </div>
         

@@ -15,6 +15,19 @@ function runTest() {
 		return;
     }
     
+    //makes sure there are no duplicates in the parsed alphabet
+    for (var a = 0; a < alphabet.length; a++) {
+        for (var b = a + 1; b < alphabet.length; b++) {
+            
+            if (alphabet[a] === alphabet[b]) {
+                error("duplicate_alphabet");
+                console.log(a + " " + b);
+                return;
+            }
+            
+        }
+    }
+    
 	//converts the string for the possible states into a array
     if ((states.charAt(0) === '{') && (states.charAt(states.length - 1) === '}')) {
         states = states.slice(1, states.length - 1).split(",");
@@ -30,6 +43,25 @@ function runTest() {
         error("parse_accepting");
 		return;
 		
+    }
+    
+    //checks for {0,1} in the alphabet, the assignment has listed them as required 
+    var checker = 0;
+    for (var a = 0; a < alphabet.length; a++) {
+        
+        if (alphabet[a] === '0') {
+            checker++;
+        }
+        
+        if (alphabet[a] === '1') {
+            checker++;
+        }
+        
+    }
+    
+    if (!(checker === 2)) {
+        error("minimum_alphabet");
+        return;
     }
 	
 	//runs a regex test on both the alphabet and possible states

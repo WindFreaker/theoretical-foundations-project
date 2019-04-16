@@ -1,1 +1,77 @@
+<html lang="en">
 
+    <title>Austin's Project</title>
+    
+    <body>
+        
+        <script id="reloader" src="reloader.js"></script>
+        <script id="handler" src="handler.js"></script>
+		<script id="tester" src="DFA.js"></script>
+		
+        <link rel="stylesheet" href="style.css">
+        
+        <div class="container">
+            
+            <div id="inputs" class="box">
+                <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()">
+                <input id="states" type="text" placeholder="States" onKeyup="checkForm()">
+                <input id="start" type="text" placeholder="Starting state" onKeyup="checkForm()">
+                <input id="accepting" type="text" placeholder="Accepting states" onKeyup="checkForm()">
+            </div>
+            
+            <div id="textarea" class="box">
+                <textarea id="transitions" placeholder="Transitions" onKeyup="checkForm()"></textarea>
+            </div>
+            
+            <div id="divider" class="box">
+            
+                <p class="specialFont">OR</p>
+            
+            </div>
+            
+            <div id="upload" class="box">
+                
+                <img src="upload_icon.png" width:="150" height="150" style="filter: brightness(0.7); display: block; margin:auto; margin-top: 50px;">
+                <p class="specialFont">Upload a file</p>
+            
+            </div>
+            
+            <div id="submit" class="box">
+                
+                <input id="teststring" type="text" placeholder="Test string" onKeyup="checkForm()">
+                <button id="runTest" onclick="runTest()" disabled="disabled">Submit</button>
+            
+            </div>
+        
+        </div>
+		
+		<div class="navbar">
+		
+			<a class="specialFont title">Austin Farmer's Theoretical Foundations Project</a>
+		
+			<div class="dropdown">
+				<a class="specialFont">Mode: DFA ▼</a>
+				<div class="dropdown content">
+					<a>DFA</a>
+					<a>NFA</a>
+					<a>Turing Machine</a>
+					<a>Option #4</a>
+				</div>
+		
+			</div>
+		
+		</div>
+        
+        <div class="output">
+        
+            
+        
+        </div>
+		
+		<button style="margin-top: 50px;" onclick="reloadScripts()">Reload Scripts</button> <br>
+		<a>Output:</a>
+		<a id="text"></a>
+        
+    </body>
+    
+</html>

@@ -6,6 +6,8 @@ function runTest() {
     var states = document.getElementById("states").value;
     var start = document.getElementById("start").value;
     var accepting = document.getElementById("accepting").value;
+    var transitions = document.getElementById("transitions").value;
+    var testString = document.getElementById("testString").value;
 	
 	//converts the string for the alphabet into a array 
     if ((alphabet.charAt(0) === '{') && (alphabet.charAt(alphabet.length - 1) === '}')) {
@@ -120,7 +122,22 @@ function runTest() {
 		
 	}
 	
-	//runs after everything else to prove no returns were run
-	document.getElementById("text").innerHTML = "Success?";
+    //creates mapping for all the transitions
+    var map = new Array(states.length);
+    for (var a = 0; a < map.length; a++) {
+        map[a] = new Array(alphabet.length);
+    }
+    
+    //breaks up the transitions string
+    transitions = transitions.split("\n");
+    for (var a = 0; a < transitions.length; a++) {
+        if ((transitions[a].charAt(0) === '(') && (transitions[a].charAt(4) === ')')) {
+            
+        }
+    }
+    
+	var currentState = start;
+    
+    document.getElementById("console").innerHTML = transitions;
 	
 }

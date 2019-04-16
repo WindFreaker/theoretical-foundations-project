@@ -53,7 +53,7 @@ function error(msg) {
 		
 	}	
 	
-    document.getElementById("text").innerHTML = output;
+    document.getElementById("console").innerHTML = output;
 }
 
 //makes sure all the inputs have atleast some information

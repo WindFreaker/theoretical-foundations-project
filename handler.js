@@ -5,16 +5,24 @@ function error(msg) {
 	switch (msg) {
 		
 		case "parse_alphabet":
-			output += "There was an error parsing the input for the alphabet.";
+			output += "There was an error parsing the alphabet.";
 			break;
+            
+        case "duplicate_alphabet":
+            output += "There are duplicate entries for the alphabet.";
+            break;
 			
 		case "parse_states":
-			output += "There was an error parsing the input for the possible states.";
+			output += "There was an error parsing the possible states.";
 			break;
 			
 		case "parse_accepting":
-			output += "There was an error parsing the input for the accepting states.";
+			output += "There was an error parsing the accepting states.";
 			break;
+            
+        case "minimum_alphabet":
+            output += "The alphabet must at least allow {0,1} to continue.";
+            break;
 			
 		case "regex_alphabet":
 			output += "The alphabet can only be made up of letters and numbers.";

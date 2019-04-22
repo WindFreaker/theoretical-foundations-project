@@ -9,12 +9,10 @@ function runTest() {
     var transitions = document.getElementById("transitions").value;
     var testString = document.getElementById("testString").value;
 	
-	//converts the string for the alphabet into a array 
-    if ((alphabet.charAt(0) === '{') && (alphabet.charAt(alphabet.length - 1) === '}')) {
-        alphabet = alphabet.slice(1, alphabet.length - 1).split(",");
-    } else {
+	alphabet = parseList(alphabet);
+    if (alphabet === false) {
         error("parse_alphabet");
-		return;
+        return;
     }
     
     //makes sure there are no duplicates in the parsed alphabet
@@ -29,12 +27,10 @@ function runTest() {
         }
     }
     
-	//converts the string for the possible states into a array
-    if ((states.charAt(0) === '{') && (states.charAt(states.length - 1) === '}')) {
-        states = states.slice(1, states.length - 1).split(",");
-    } else {
+	states = parseList(states);
+    if (states === false) {
         error("parse_states");
-		return;
+        return;
     }
     
     //makes sure there are no duplicates in the parsed possible states
@@ -49,13 +45,10 @@ function runTest() {
         }
     }
     
-	//converts the string for the accepting states into a array
-    if ((accepting.charAt(0) === '{') && (accepting.charAt(accepting.length - 1) === '}')) {
-        accepting = accepting.slice(1, accepting.length - 1).split(",");
-    } else {
+	accepting = parseList(accepting);
+    if (accepting === false) { 
         error("parse_accepting");
-		return;
-		
+        return;
     }
     
     //makes sure there are no duplicates in the parsed accepting states
@@ -121,23 +114,28 @@ function runTest() {
 		}
 		
 	}
-	
-    //creates mapping for all the transitions
-    var map = new Array(states.length);
-    for (var a = 0; a < map.length; a++) {
-        map[a] = new Array(alphabet.length);
+    
+    map = parseTransitions(states, alphabet, transitions);
+    if (map === false) {
+        error("parse_transitions");
+        return;
     }
     
-    //breaks up the transitions string
-    transitions = transitions.split("\n");
-    for (var a = 0; a < transitions.length; a++) {
-        if ((transitions[a].charAt(0) === '(') && (transitions[a].charAt(4) === ')')) {
+    //makes sure no transitions are undefined for DFA
+    for (var a = 0; a < map.length; a++) {
+        for (var b = 0; b < map[a].length; b++) {
+            
+            if (map[a][b] === undefined) {
+                error("transition_undefined");
+                return;
+            }
             
         }
     }
     
 	var currentState = start;
     
-    document.getElementById("console").innerHTML = transitions;
+    document.getElementById("pathText").innerHTML = map[0][0];
+    success();
 	
 }

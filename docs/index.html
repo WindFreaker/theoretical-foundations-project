@@ -2,15 +2,48 @@
 
     <title>Austin's Project</title>
     
-    <body>
+    <body ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
         
         <script id="reloader" src="reloader.js"></script>
         <script id="handler" src="handler.js"></script>
+        <script id="fileDrop" src="fileDrop.js"></script>
 		<script id="tester" src="DFA.js"></script>
 		
         <link rel="stylesheet" href="style.css">
         
-        <div class="container">
+        <div id="overlay">
+            
+            <div class="successPopup">
+            
+                <div id="diagram" style="grid-area: a;">
+                
+                    <a>Dicks!</a>
+                
+                </div>
+                
+                <div id="diagramPath" style="grid-area: b;">
+                
+                    <a id="pathText"></a>
+                
+                </div>
+                
+                <div style="grid-area: c;">
+                    <button onclick="closePopup()">Close</button>
+                </div>
+            
+            </div>
+            
+        </div>
+        
+        <div id="errorPopup">
+            
+            <div id="errorHolder">
+                <a id="console"></a>
+            </div>
+            
+        </div>
+        
+        <div id="form" class="container">
             
             <div id="inputs" class="box">
                 <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()">
@@ -50,27 +83,21 @@
 			<a class="specialFont title">Austin Farmer's Theoretical Foundations Project</a>
 		
 			<div class="dropdown">
-				<a class="specialFont">Mode: DFA ▼</a>
+                
+				<button id="modeChanger" class="dropdown button">Mode: DFA ▼</button>
+                
 				<div class="dropdown content">
-					<a>DFA</a>
-					<a>NFA</a>
-					<a>Turing Machine</a>
-					<a>Option #4</a>
+					<a onclick="changeTester(0)">Deterministic Finite Automata</a>
+					<a onclick="changeTester(1)">Nondeterministic Finite Automata</a>
+					<a onclick="changeTester(2)">Turing Machine</a>
 				</div>
 		
 			</div>
 		
 		</div>
-        
-        <div class="output">
-        
-            test
-        
-        </div>
 		
-		<button style="margin-top: 50px;" onclick="reloadScripts()">Reload Scripts</button> <br>
-		<a>Output:</a>
-		<a id="console"></a>
+        <button style="margin-top: 10px; margin-left: 170px; margin-right: 0px;" onclick="reloadScripts()">Reload Scripts</button>
+        <button style="margin-top: 10px; margin-right: 0px;" onclick="fillForm()">Autofill Form</button>
         
     </body>
     

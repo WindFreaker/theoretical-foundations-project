@@ -47,6 +47,7 @@ body {
     --input-color: rgb(72, 76, 82);
     --text-color: rgb(216, 217, 218);
     --error-color: rgb(211, 68, 68);
+    --upload-color: rgb(108, 129, 203);
 }
 
 ::placeholder {
@@ -55,6 +56,16 @@ body {
 
 ::selection {
     color: inherit;
+}
+
+input::selection {
+    background-color: lightblue;
+    color: black;
+}
+
+textarea::selection {
+    background-color: lightblue;
+    color: black;
 }
      
 body {
@@ -98,7 +109,7 @@ textarea {
     resize: none;
     border: none;
     outline: none;
-    height: 220px; /* BRUTE FORCE UNAVOIDABLE? */
+    height: 220px; /* BRUTE FORCE UNAVOIDABLE AFAIK */
 }
 
 textarea:focus {

@@ -91,6 +91,15 @@ function runTest() {
 			return;
 		}
 	}
+    
+    // ! ! ! TEMPORARY FIX TO THE MULTIPLE DIGITS ISSUE ! ! !
+    // NEEDS A WAY TO ALLOW FOR MULTIPLE CHARACTER VALUES IN THE ALPHABET WITHOUT BREAKING TEST STRING
+    for (var a = 0; a < alphabet.length; a++) {
+		if (alphabet[a].length !== 1) {
+            error("temp_alphabet_length");
+            return;
+        }
+	}
 	
 	for (var a = 0; a < states.length; a++) {
 		if (!(regex.test(states[a]))) {
@@ -133,9 +142,21 @@ function runTest() {
         }
     }
     
-	var currentState = start;
+	var pos = states.indexOf(start);
     
-    document.getElementById("pathText").innerHTML = map[0][0];
+    for (var a = 0; a < testString.length; a++) {
+        pos = map[pos][alphabet.indexOf(testString.charAt(a))];
+    }
+    
+    var finalPos = states[pos];
+    finalPos = accepting.indexOf(finalPos);
+    
+    if (finalPos === -1) {
+        document.getElementById("pathText").innerHTML = "Test failed!";
+    } else {
+        document.getElementById("pathText").innerHTML = finalPos;
+    }
+    
     success();
 	
 }

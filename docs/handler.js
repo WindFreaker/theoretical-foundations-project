@@ -103,6 +103,14 @@ function error(msg) {
         case "transition_undefined":
             output += "One or more transitions are undefined.";
             break;
+            
+        case "upload_unsupported":
+            output += "The uploaded file is not supported.";
+            break;
+            
+        case "temp_alphabet_length":
+            output += "The alphabet's entries can only be one character long.";
+            break;
 			
 		default:
 			output += "You have stumbled upon an error called \"" + msg + "\" but it is undefined. Congrats?";
@@ -112,6 +120,7 @@ function error(msg) {
     //sets the message to display in the popup
     document.getElementById("console").innerHTML = output;
     
+    document.getElementById("errorHolder").style.backgroundColor = "var(--error-color)"; //fixes hijack
     document.getElementById("errorHolder").style.animation = "growPopup .3s";
     document.getElementById("errorHolder").style.transform = "scale(1)";
     
@@ -140,6 +149,7 @@ function checkForm() {
 	
 	var inputs = document.getElementsByTagName("input");
 	for (var a = 0; a < inputs.length; a++) {
+        if (inputs[a].id === "clickToUpload") continue;
 		if (inputs[a].value.length === 0) canSubmit = false;
 	}
 	

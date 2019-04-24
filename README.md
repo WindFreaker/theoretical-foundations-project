@@ -4,3 +4,6 @@ Click this [link](https://windfreaker.github.io/theoretical-foundations-project/
 ### Available Modes
 - Deterministic Finite Automata
 - Nondeterministic Finite Automata
+
+### How to Use
+- All information needed can be typed into the

@@ -168,14 +168,31 @@ function checkForm() {
 	
 }
 
-function fillForm() {
+function fillForm(num) {
     
-    document.getElementById("alphabet").value = "{0,1}";
-    document.getElementById("states").value = "{a,b,c,d}";
-    document.getElementById("start").value = "a";
-    document.getElementById("accepting").value = "{d}";
-    document.getElementById("transitions").value = "(a,0)->b\n(a,1)->a\n(b,0)->c\n(b,1)->a\n(c,0)->c\n(c,1)->d\n(d,0)->d\n(d,1)->d";
-    document.getElementById("testString").value = "001";
+    switch (num) {
+            
+        case 1:
+            document.getElementById("alphabet").value = "{0,1}";
+            document.getElementById("states").value = "{a,b,c,d}";
+            document.getElementById("start").value = "a";
+            document.getElementById("accepting").value = "{d}";
+            document.getElementById("transitions").value = "(a,0)->b\n(a,1)->a\n(b,0)->c\n(b,1)->a\n(c,0)->c\n(c,1)->d\n(d,0)->d\n(d,1)->d";
+            document.getElementById("testString").value = "001";
+            break;
+            
+        case 2:
+            document.getElementById("alphabet").value = "{0,1}";
+            document.getElementById("states").value = "{a,b,c,d}";
+            document.getElementById("start").value = "a";
+            document.getElementById("accepting").value = "{c}";
+            document.getElementById("transitions").value = "(a,0)->b\n(a,0)->c\n(a,1)->a\n(b,0)->c\n(b,1)->a\n(c,0)->d\n(c,1)->c\n(d,0)->d\n(d,1)->d";
+            document.getElementById("testString").value = "001";
+            break;
+            
+        default:
+            
+    }
     
     checkForm();
     

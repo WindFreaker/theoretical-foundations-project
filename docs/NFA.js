@@ -186,23 +186,14 @@ function iterate(stringPos, currentState) {
             if (returned !== false) {
                 
                 currentState = parseInt(possibleStates[a]);
-                path += ")->" + states[currentState] + "<br>" + returned;
+                return path += ")->" + states[currentState] + "<br>" + returned;
                 
-                var finalPos = accepting.indexOf(states[currentState]);
-                if (finalPos !== -1) {
-                    return path;
-                } else {
-                    return false;;
-                }
-                
-            }
-            
-            //if all iterations have been tested and all returned false, then the NFA fails
-            if (a === possibleStates.length - 1) {
-                return false;
             }
             
         }
+        
+        //if all iterations have been tested and all returned false, then the NFA fails
+        return false;
         
     } else {
         

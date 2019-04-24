@@ -124,7 +124,7 @@ function runTest() {
 		
 	}
     
-    map = parseTransitions(states, alphabet, transitions);
+    map = parseTransitions(states, alphabet, transitions, false);
     if (map === false) {
         error("parse_transitions");
         return;
@@ -142,21 +142,28 @@ function runTest() {
         }
     }
     
-	var pos = states.indexOf(start);
+    document.getElementById("pathText").innerHTML = "";
+    var pos = states.indexOf(start);
     
     for (var a = 0; a < testString.length; a++) {
+        
+        document.getElementById("pathText").innerHTML += testString[a] + ": (" + states[pos] + ",";
         pos = map[pos][alphabet.indexOf(testString.charAt(a))];
+        document.getElementById("pathText").innerHTML += testString[a] + ")->" + states[pos] + "<br>";
+        
     }
     
     var finalPos = states[pos];
     finalPos = accepting.indexOf(finalPos);
     
     if (finalPos === -1) {
-        document.getElementById("pathText").innerHTML = "Test failed!";
+        document.getElementById("path").style.color = "var(--error-color)";
+        document.getElementById("path").innerHTML = "Test failed!";
     } else {
-        document.getElementById("pathText").innerHTML = finalPos;
+        document.getElementById("path").style.color = "var(--success-color)";
+        document.getElementById("path").innerHTML = "Test successful!";
     }
     
-    success();
+    showOverlay();
 	
 }

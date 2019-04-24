@@ -9,7 +9,7 @@ function parseList(string) {
     
 }
 
-function parseTransitions(list1, list2, string) {
+function parseTransitions(list1, list2, string, multiple) {
     
     //creates mapping for all the transitions
     var map = new Array(list1.length);
@@ -38,7 +38,15 @@ function parseTransitions(list1, list2, string) {
         var returningPos = list1.indexOf(string[a].slice(string[a].indexOf('>') + 1, string[a].length));
         if (returningPos === -1) return false;
         
-        map[list1Pos][list2Pos] = returningPos;
+        if (map[list1Pos][list2Pos] !== undefined) {
+            if (multiple) {
+                map[list1Pos][list2Pos] += "," + returningPos; //creates a pseudo-list for NFAs
+            } else {
+                return false;
+            }
+        } else {
+            map[list1Pos][list2Pos] = returningPos;
+        }
         
     }
     
@@ -97,7 +105,7 @@ function error(msg) {
 			break;
             
         case "parse_transitions":
-			output += "There was an error parsing the transitions.";
+			output += "There was an error parsing the list of transitions.";
 			break;
             
         case "transition_undefined":
@@ -131,14 +139,13 @@ function error(msg) {
     
 }
 
-//ouputs the results of a successful test for the user
-function success() {
-    
+//toggles the overlay on
+function showOverlay() {
     document.getElementById("overlay").style.display = "inherit";
-    
 }
 
-function closePopup() {
+//toggles the overlay off
+function hideOverlay() {
     document.getElementById("overlay").style.display = "none";
 }
 

@@ -47,11 +47,24 @@ body {
     --input-color: rgb(72, 76, 82);
     --text-color: rgb(216, 217, 218);
     --error-color: rgb(211, 68, 68);
+    --success-color: rgb(29, 185, 84);
     --upload-color: rgb(108, 129, 203);
 }
 
 ::placeholder {
     color: gray;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--input-color);
+}
+
+textarea:focus::-webkit-scrollbar-thumb {
+    background: var(--lighter-color);
 }
 
 ::selection {
@@ -116,6 +129,13 @@ textarea:focus {
     background-color: var(--input-color);
 }
 
+.monospaceFont {
+    margin: auto;
+    text-align: center;
+    font: 1.2em monaco, monospace;
+    color: var(--text-color);
+}
+
 .specialFont {
 	margin: auto;
     text-align: center;
@@ -164,11 +184,12 @@ textarea:focus {
 .successPopup {
     background-color: var(--main-color);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     grid-template-areas:
-        "a b"
-        "a c";
+        "a"
+        "b"
+        "c";
     padding: 16px;
     border-radius: 16px;
 }

@@ -1,1 +1,3 @@
-test
+function runTest() {
+    //nothing just yet ;)
+}

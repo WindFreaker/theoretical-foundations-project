@@ -1,9 +1,3 @@
-//reloads self when needed to test without reloading entire webpage
-function reloadScripts() {
-    reloadTester("DFA.js");
-    reloadHandlers();
-}
-
 function changeTester(number) {
     
     var name = "";
@@ -45,30 +39,4 @@ function reloadTester(name) {
 	location.src = name;
 	document.body.appendChild(location);
 	
-}
-
-function reloadHandlers() {
-    
-    var location = document.getElementById("handler");
-    if (location !== null) {
-        document.body.removeChild(location);
-    }
-    
-    location = document.createElement("script");
-    location.id = "handler";
-    location.src = "handler.js";
-    document.body.appendChild(location);
-    
-    /* Above Reloads handler.js | Below Reloads fileDrop.js */
-    
-    var location = document.getElementById("fileDrop");
-    if (location !== null) {
-        document.body.removeChild(location);
-    }
-    
-    location = document.createElement("script");
-    location.id = "fileDrop";
-    location.src = "fileDrop.js";
-    document.body.appendChild(location);
-    
 }

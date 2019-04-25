@@ -140,7 +140,7 @@ function runTest() {
         document.getElementById("path").style.color = "var(--error-color)";
         document.getElementById("path").innerHTML = "Test failed!";
         
-        document.getElementById("pathText").innerHTML = "no_one_fail";
+        document.getElementById("pathText").innerHTML = "No single route.";
         
     } else {
         document.getElementById("path").style.color = "var(--success-color)";

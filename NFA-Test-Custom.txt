@@ -6,3 +6,7 @@ a
 (bb,7)->b
 (b,1)->b
 (b,1)->c
+(c,1)->woah
+(c,7)->woah
+(c,7)->bb
+(woah,0)->a

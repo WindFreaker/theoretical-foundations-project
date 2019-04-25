@@ -88,6 +88,7 @@ body {
 
 input {
     background-color: var(--lighter-color);
+    font: 1em monaco, monospace;
     color: white;
     margin: 8px;
     padding: 10px;
@@ -100,7 +101,7 @@ input:focus {
 }
 
 button {
-    background-color: var(--input-color);
+    background-color: var(--lighter-color);
     color: white;
     margin: 8px;
     padding: 10px;
@@ -108,21 +109,34 @@ button {
     outline: white;
 }
 
+button:hover {
+    background-color: var(--input-color);
+}
+
 button:disabled {
-    background-color: var(--lighter-color);
     color: gray;
+}
+
+button:disabled:hover {
+    background-color: var(--lighter-color);
+}
+
+button:active {
+    /* no click animation ;( */
 }
 
 textarea {
     background-color: var(--lighter-color);
+    font: 1em monaco, monospace;
+    overflow-wrap: normal;
     color: white;
     margin: 8px;
     padding: 10px;
     border: none;
     resize: none;
-    border: none;
     outline: none;
     height: 220px; /* BRUTE FORCE UNAVOIDABLE AFAIK */
+    width: 91.5%;
 }
 
 textarea:focus {

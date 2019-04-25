@@ -65,7 +65,7 @@
             <div id="upload" class="box" onclick="clickRedirect()">
                 
                 <img src="upload_icon.png" width:="150" height="150" style="filter: brightness(0.7); display: block; margin:auto; margin-top: 50px;">
-                <p class="specialFont">Upload a file</p>
+                <p class="specialFont">Click/Drag to Upload File</p>
                 <input type="file" id="clickToUpload" style="display: none;" onchange="clickHandler(event)">
             
             </div>
@@ -90,16 +90,12 @@
 				<div class="dropdown content">
 					<a onclick="changeTester(0)">Deterministic Finite Automata</a>
 					<a onclick="changeTester(1)">Nondeterministic Finite Automata</a>
-					<a onclick="changeTester(2)">Turing Machine</a>
+					<a onclick="changeTester(2)" style="display: none;">Turing Machine (WIP)</a>
 				</div>
 		
 			</div>
 		
 		</div>
-		
-        <button style="margin-top: 10px; margin-left: 170px; margin-right: 0px;" onclick="reloadScripts()">Reload Scripts</button>
-        <button style="margin-top: 10px; margin-right: 0px;" onclick="fillForm(1)">Autofill Form DFA</button>
-        <button style="margin-top: 10px; margin-right: 0px;" onclick="fillForm(2)">Autofill Form NFA</button>
         
     </body>
     

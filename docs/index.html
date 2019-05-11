@@ -5,7 +5,7 @@
     <body ondrop="dropHandler(event);" ondragover="dragOverHandler(event); ">
         
         <script id="reloader" src="reloader.js"></script>
-        <script id="handler" src="handler.js"></script>
+        <script id="handler" src="handlers.js"></script>
         <script id="fileDrop" src="fileDrop.js"></script>
 		<script id="tester" src="DFA.js"></script>
 		
@@ -35,9 +35,9 @@
             
         </div>
         
-        <div id="errorPopup">
+        <div id="popupHolder">
             
-            <div id="errorHolder">
+            <div id="popup">
                 <a id="console"></a>
             </div>
             
@@ -48,7 +48,7 @@
             <div id="inputs" class="box">
                 <input id="alphabet" type="text" placeholder="Alphabet" onKeyup="checkForm()">
                 <input id="states" type="text" placeholder="States" onKeyup="checkForm()">
-                <input id="start" type="text" placeholder="Starting state" onKeyup="checkForm()">
+                <input id="starting" type="text" placeholder="Starting state" onKeyup="checkForm()">
                 <input id="accepting" type="text" placeholder="Accepting states" onKeyup="checkForm()">
             </div>
             
@@ -73,7 +73,7 @@
             <div id="submit" class="box">
                 
                 <input id="testString" type="text" placeholder="Test string" onKeyup="checkForm()">
-                <button id="runTest" onclick="runTest()" disabled="disabled">Submit</button>
+                <button id="runTest" onclick="submitHandler()" disabled="disabled">Submit</button>
             
             </div>
         

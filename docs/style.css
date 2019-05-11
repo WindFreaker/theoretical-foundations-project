@@ -11,7 +11,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#errorPopup {
+#popupHolder {
     margin: 0;
     position: absolute;
     top: 25%;
@@ -176,7 +176,7 @@ textarea:focus {
     border-radius: 16px;
 }
 
-#errorHolder {
+#popup {
     background-color: var(--error-color);
     font-weight: bolder;
     padding: 16px;

@@ -1,3 +1,3 @@
 function runTest() {
-    //nothing just yet ;)
+    // nothing just yet ;)
 }

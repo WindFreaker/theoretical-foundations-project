@@ -6,156 +6,59 @@ NEW COMMENTS HAVE BEEN ADDED POINTING OUT THE CHANGES
 
 */
 
-var alphabet, states, start, accepting, transitions, testString, map;
-
-function runTest() {
-    
-    //main variables have been made global to work with the iterate function
-    alphabet = document.getElementById("alphabet").value;
-    states = document.getElementById("states").value;
-    start = document.getElementById("start").value;
-    accepting = document.getElementById("accepting").value;
-    transitions = document.getElementById("transitions").value;
-    testString = document.getElementById("testString").value;
+function setup() {
 	
-	alphabet = parseList(alphabet);
-    if (alphabet === false) {
-        error("parse_alphabet");
-        return;
+	alphabet = parseList(alphabet, "alphabet");
+	states = parseList(states, "possible states");
+	accepting = parseList(accepting, "accepting states");
+    
+    for (var a = 0; a < alphabet.length; a++) {
+        if (alphabet[a] === '0') break;
+        if (a === alphabet.length - 1) throw [ "minimum_alphabet" ];
+    }
+        
+    for (var a = 0; a < alphabet.length; a++) {
+        if (alphabet[a] === '1') break;
+        if (a === alphabet.length - 1) throw [ "minimum_alphabet" ];
     }
     
     for (var a = 0; a < alphabet.length; a++) {
-        for (var b = a + 1; b < alphabet.length; b++) {
-            
-            if (alphabet[a] === alphabet[b]) {
-                error("duplicate_alphabet");
-                return;
-            }
-            
-        }
-    }
-    
-	states = parseList(states);
-    if (states === false) {
-        error("parse_states");
-        return;
-    }
-    
-    for (var a = 0; a < states.length; a++) {
-        for (var b = a + 1; b < states.length; b++) {
-            
-            if (states[a] === states[b]) {
-                error("duplicate_states");
-                return;
-            }
-            
-        }
-    }
-    
-	accepting = parseList(accepting);
-    if (accepting === false) { 
-        error("parse_accepting");
-        return;
-    }
-    
-    for (var a = 0; a < accepting.length; a++) {
-        for (var b = a + 1; b < accepting.length; b++) {
-            
-            if (accepting[a] === accepting[b]) {
-                error("duplicate_accepting");
-                return;
-            }
-            
-        }
-    }
-    
-    var checker = 0;
-    for (var a = 0; a < alphabet.length; a++) {
-        
-        if (alphabet[a] === '0') {
-            checker++;
-        }
-        
-        if (alphabet[a] === '1') {
-            checker++;
-        }
-        
-    }
-    
-    if (checker !== 2) {
-        error("minimum_alphabet");
-        return;
-    }
-	
-	var regex = new RegExp('^[a-zA-Z0-9]+$');
-	
-	for (var a = 0; a < alphabet.length; a++) {
-		if (!(regex.test(alphabet[a]))) {
-			error("regex_alphabet");
-			return;
-		}
-	}
-    
-    for (var a = 0; a < alphabet.length; a++) {
-		if (alphabet[a].length !== 1) {
-            error("temp_alphabet_length");
-            return;
-        }
+		if (alphabet[a].length !== 1) throw [ "temp_alphabet_length" ];
 	}
 	
-	for (var a = 0; a < states.length; a++) {
-		if (!(regex.test(states[a]))) {
-			error("regex_states");
-			return;
-		}
-	}
-	
-	if (!(states.includes(start))) {
-		error("missing_start");
-		return;
-    }
+	if (!(states.includes(starting))) throw [ "missing_starting" ];
 
 	for (var a = 0; a < accepting.length; a++) {
-		
-		if (!(states.includes(accepting[a]))) {
-			error("missing_accepting");
-			return;
-		}
-		
-	}
+		if (!(states.includes(accepting[a]))) throw [ "missing_accpeting", a ];
+    }
     
-    //variable has been made global to work with the iterate function
-    //also, the parsing must allow for multiple transitions
+    // the parsing of the transitions must allow for multiple paths
     map = parseTransitions(states, alphabet, transitions, true);
-    if (map === false) {
-        error("parse_transitions");
-        return;
-    }
     
-    //undefined transitions are acceptable for NFAs, code block has been removed
+    // undefined transitions are acceptable for NFAs, code block has been removed
     
-    var prospect = iterate(0, states.indexOf(start));
-    
-    if (prospect === false) {
-        document.getElementById("path").style.color = "var(--error-color)";
-        document.getElementById("path").innerHTML = "Test failed!";
-        
-        document.getElementById("pathText").innerHTML = "No single route.";
-        
-    } else {
-        document.getElementById("path").style.color = "var(--success-color)";
-        document.getElementById("path").innerHTML = "Test successful!";
-        
-        document.getElementById("pathText").innerHTML = prospect;
-        
-    }
-    
-    showOverlay();
-	
 }
 
-//this is the biggest change from DFA to NFA
-//NFAs can have no possible paths but also infinite possible paths
+//completely different from DFA (see iterate)
+function runTest() {
+    
+    var iterateResults = iterate(0, states.indexOf(starting));
+    if (iterateResults === false) {
+        
+        document.getElementById("pathText").innerHTML = "No single route.";
+        return false;
+        
+    } else {
+        
+        document.getElementById("pathText").innerHTML = iterateResults;
+        return true;
+        
+    }
+    
+}
+
+// this is the biggest change from DFA to NFA
+// NFAs can have no possible paths but also infinite possible paths
 function iterate(stringPos, currentState) {
     
     if (stringPos === testString.length) {
@@ -172,7 +75,7 @@ function iterate(stringPos, currentState) {
     var path = testString[stringPos] + ": (" + states[currentState] + "," + testString[stringPos];
     currentState = map[currentState][alphabet.indexOf(testString.charAt(stringPos))];
     
-    //if the path is not possible then the NFA fails
+    // if the path is not possible then the NFA fails
     if (currentState === undefined) return false;
     
     if (currentState.toString().indexOf(",") !== -1) {
@@ -182,7 +85,7 @@ function iterate(stringPos, currentState) {
 
             var returned = iterate(stringPos + 1, parseInt(possibleStates[a]));
             
-            //if an acceptable branch has been found, return it
+            // if an acceptable branch has been found, return it
             if (returned !== false) {
                 
                 currentState = parseInt(possibleStates[a]);
@@ -192,7 +95,7 @@ function iterate(stringPos, currentState) {
             
         }
         
-        //if all iterations have been tested and all returned false, then the NFA fails
+        // if all iterations have been tested and all returned false, then the NFA fails
         return false;
         
     } else {
